@@ -10,10 +10,10 @@ class FeatureExtraction
 {
     public :
         //declaration
-        void BagOfWords(std::vector<std::vector<std::string>> processedData);
+        void bagOfWords(std::vector<std::vector<std::string>> processedData);
 };
 
-void FeatureExtraction::BagOfWords(std::vector<std::vector<std::string>> processedData)
+void FeatureExtraction::bagOfWords(std::vector<std::vector<std::string>> processedData)
 {
     /*
     Basic steps to perform bag of words
@@ -44,7 +44,7 @@ void FeatureExtraction::BagOfWords(std::vector<std::vector<std::string>> process
     {
         uniquewords.push_back(str);
     }
-
+    //should be 21768 rows
     std::cout<<"Unique words : "<<uniquewords.size()<<std::endl;
 
     //2. writing the columns in the output BagOfWords.csv file
