@@ -1,6 +1,6 @@
 #include<iostream>
-#include "Preprocessing.cpp"
-#include "FeatureExtraction.cpp"
+#include "01 - Preprocessing.cpp"
+#include "06 - FeatureExtraction.cpp"
 #include<fstream>
 #include<vector>
 #include<sstream>       //for stringstream class
@@ -40,7 +40,6 @@ int main()
     //definning the map to append each of the row of the dataset into it
     std::map<int,std::vector<std::string>> row; 
     std::vector<std::string>::iterator it;
-    std::vector<std::vector<std::string>> processedData;
 
     std::ofstream outProcess;
     outProcess.open("03 - processed data.txt");
@@ -78,7 +77,7 @@ int main()
         stemmedwords = obj.stemWords(removedStopWords);
         // for(it = stemmedwords.begin();it!=stemmedwords.end();it++)
         // {
-        //     // std::cout<<*it<<" ";
+        // std::cout<<*it<<" ";
         //     tempTotalWords.insert(*it);
         // }
         // i++;
@@ -87,8 +86,16 @@ int main()
         std::cout<<i+1<<std::endl;
         i++;
 
-        processedData.push_back(stemmedwords);
+
         //to clear the contents of vector
+
+        // for(int i=0;i<stemmedwords.size();i++)
+        // {
+        //     outProcess<<stemmedwords[i];
+        //     if(i!=stemmedwords.size()-1)
+        //     outProcess<<",";
+        // }
+        // outProcess<<std::endl;
         stemmedwords.clear();
         line="";
     }
@@ -103,8 +110,6 @@ int main()
     // }
     // twords.close();
     // fe.BagOfWords(totalWords);
-    
-    
 
     return 0;
 }
