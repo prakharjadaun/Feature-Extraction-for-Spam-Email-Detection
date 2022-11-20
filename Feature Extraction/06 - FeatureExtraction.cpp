@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include<map>
+#include<unordered_map>
 #include<set>
 #include<vector>
 #include<fstream>
@@ -36,17 +36,58 @@ void FeatureExtraction::bagOfWords(std::vector<std::vector<std::string>> process
 
     //1. Reading the unique words from the unique words.text
     std::vector<std::string> uniquewords;
-    std::ifstream in;
-    in.open("unique words.txt");
-    std::string str;
+    std::unordered_map<std::string,int> m;
 
+    std::ifstream in;
+    in.open("05 - unique words.txt");
+    std::ofstream out;
+    out.open("08 - BagOfWords.csv");
+
+    std::string str;
+    int z=0;
     while(in>>str)
     {
+        std::cout<<"Reading...."<<z<<std::endl;
+        z++;
         uniquewords.push_back(str);
     }
-    //should be 21768 rows
+    //should be 21768 unique words 
     std::cout<<"Unique words : "<<uniquewords.size()<<std::endl;
 
     //2. writing the columns in the output BagOfWords.csv file
+    for(int i=0;i<uniquewords.size();i++)
+    {
+        out<<uniquewords[i]<<",";
+    }
+    out<<std::endl;
+
+    //3. creating the bag of words file
+    for(int i=0;i<1;i++)
+    {
+        for(int j=0;j<processedData[0].size();j++)
+        {
+            m[processedData[i][j]]++;
+        }
+
+        for(int k = 0;k<uniquewords.size();k++)
+        {
+            if(m.find(uniquewords[k])==m.end())
+            {
+                out<<0<<",";
+            }
+            else
+            {
+                out<<m[uniquewords[k]]<<",";
+            }
+        }
+        out<<std::endl;
+    }
+
+    //1 unique words (file) -> vector 
+    //ek order rhenge
+    //bag of words mein column same rhega har run pe
+    //2 bagofwords.csv -> column (unique words)
+
+    //
 
 }
