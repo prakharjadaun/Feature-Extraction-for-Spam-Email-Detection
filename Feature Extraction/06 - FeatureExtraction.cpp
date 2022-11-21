@@ -47,7 +47,7 @@ void FeatureExtraction::bagOfWords(std::vector<std::vector<std::string>> process
     int z=0;
     while(in>>str)
     {
-        std::cout<<"Reading...."<<z<<std::endl;
+        std::cout<<"Reading...."<<z+1<<" "<<str<<std::endl;
         z++;
         uniquewords.push_back(str);
     }
@@ -61,26 +61,36 @@ void FeatureExtraction::bagOfWords(std::vector<std::vector<std::string>> process
     }
     out<<std::endl;
 
+    // std::cout<<processedData.size()<<std::endl;
+    // std::cout<<processedData[0].size()<<std::endl;
+
     //3. creating the bag of words file
-    for(int i=0;i<1;i++)
+    for(int i=0;i<processedData.size();i++)
     {
-        for(int j=0;j<processedData[0].size();j++)
+        for(int j=0;j<processedData[i].size();j++)
         {
             m[processedData[i][j]]++;
+            // std::cout<<m[processedData[i][j]]<<std::endl;
         }
+        // 1    2     3
 
         for(int k = 0;k<uniquewords.size();k++)
         {
-            if(m.find(uniquewords[k])==m.end())
+            if(m.find(uniquewords[k]) == m.end())
             {
                 out<<0<<",";
             }
             else
             {
+                // std::cout<<"hello"<<std::endl;
                 out<<m[uniquewords[k]]<<",";
             }
         }
+        if(i!=processedData.size()-1)
         out<<std::endl;
+        m.clear();
+
+        std::cout<<i+1<<std::endl;
     }
 
     //1 unique words (file) -> vector 
@@ -89,5 +99,4 @@ void FeatureExtraction::bagOfWords(std::vector<std::vector<std::string>> process
     //2 bagofwords.csv -> column (unique words)
 
     //
-
 }

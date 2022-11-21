@@ -100,16 +100,64 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<unordered_map>
 using namespace std;
 int main()
 {
-    ifstream in;
-    in.open("unique words.txt");
-    // vector<string> v = {"hello","here","prakhar"};
+    ofstream out;
+    out.open("sample bag.txt");
+    // in.open("unique words.txt");
     string str;
-    while(in>>str)
-    {   
-        cout<<str<<" ";
+    // while(in>>str)
+    // {   
+    //     cout<<str<<" ";
+    // }
+    // in.close();
+
+
+
+    vector<string> uniq = {"prakrati","sanidhya","prakhar","hello","here","you"};
+
+    for(int i=0;i<uniq.size();i++)
+    {
+        out<<uniq[i]<<",";
     }
-    in.close();
+    out<<endl;
+
+    vector<string> v = {"hello","here","prakhar","here","you"};
+
+    // vector<vector<string>> w;
+
+    // w.push_back(v);
+
+
+    // for(int i=0;i<w.size();i++)
+    // {
+    //     for(int j=0;j<w[i].size();j++)
+    //     {
+    //         cout<<w[i][j]<<" ";
+    //     }
+
+    // }
+    cout<<endl;
+    unordered_map<string,int> m;
+    for(int i=0;i<v.size();i++)
+    {
+        m[v[i]]++;
+    }
+
+    for(int k=0;k<uniq.size();k++)
+    {
+        if(m.find(uniq[k])==m.end())
+        {
+            out<<0<<",";
+        }
+        else
+        {
+            out<<m[uniq[k]]<<",";
+        }
+    }  
+
+
+    
 }

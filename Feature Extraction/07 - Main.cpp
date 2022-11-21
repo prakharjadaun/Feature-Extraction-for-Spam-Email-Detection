@@ -25,7 +25,7 @@ int main()
 
         for(int i=0;i<line.size();i++)
         {
-            if(line[i]=',')
+            if(line[i]!=',')
             {
                 temp = temp + line[i];
             }
@@ -38,6 +38,8 @@ int main()
         processedData.push_back(row);
         row.clear();
     }
+
+    // std::cout<<processedData[0].size()<<std::endl;
 
     // std::getline(in,line);
     // std::cout<<line<<std::endl;
@@ -63,7 +65,7 @@ int main()
 
     //creating an object of the FeatureExtraction class
     FeatureExtraction fe;
-    //calling the
+    //calling the function of bagofwords to generate a csv file 
     fe.bagOfWords(processedData);
 
     in.close();
