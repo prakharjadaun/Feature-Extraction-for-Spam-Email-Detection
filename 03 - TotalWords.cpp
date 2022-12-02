@@ -1,6 +1,5 @@
 #include<iostream>
-#include "01 - Preprocessing.cpp"
-#include "06 - FeatureExtraction.cpp"
+#include "02 - Preprocessing.cpp"
 #include<fstream>
 #include<vector>
 #include<sstream>       //for stringstream class
@@ -9,7 +8,6 @@ int main()
 {
     //definning an object of class Preprocessing
     Preprocessing obj;
-    FeatureExtraction fe;
     //definning a pair having both the values as string
     std::pair<std::string,std::string> val;
     //definning a temporary variable
@@ -22,21 +20,12 @@ int main()
     in.open("Final Dataset.csv");
     std::string line = "";
     getline(in,line);
-    // std::ofstream outROSC,outLower;
-
-    //ROSC - Removal of special character
-    // outROSC.open("Processing in CPP\\output\\ROSC.csv");
-    // outROSC<<line<<std::endl;
-
-    //outLower - lowercase conversion
-    // outLower.open("Processing in CPP\\output\\Lowercase.csv");
-    // outLower<<line<<std::endl;
 
     //definning the pair named stemmedWords 
     std::vector<std::string> stemmedwords;
 
     std::unordered_set<std::string> tempTotalWords;
-    // std::vector<std::string> totalWords;
+    std::vector<std::string> totalWords;
     //definning the map to append each of the row of the dataset into it
     std::map<int,std::vector<std::string>> row; 
     std::vector<std::string>::iterator it;
@@ -61,11 +50,9 @@ int main()
 
         //removing the special characters from the dataset and storing it into the ROSC.csv
         val = obj.removeSpecialChar(val);
-        // outROSC<<val.first<<","<<val.second<<","<<label<<std::endl;
 
         //converting all the uppercase alphabet to lowercase
         val = obj.lowercaseConversion(val);
-        // outLower<<val.first<<","<<val.second<<","<<label<<std::endl;
 
         //calling the tokenization function of the preprocessing class 
         tokenised = obj.tokenize(val);
@@ -75,11 +62,11 @@ int main()
 
         //performing stemming
         stemmedwords = obj.stemWords(removedStopWords);
-        // for(it = stemmedwords.begin();it!=stemmedwords.end();it++)
-        // {
-        // std::cout<<*it<<" ";
-        //     tempTotalWords.insert(*it);
-        // }
+        for(it = stemmedwords.begin();it!=stemmedwords.end();it++)
+        {
+            // std::cout<<*it<<" ";
+            tempTotalWords.insert(*it);
+        }
         // i++;
         // if(i==1)
         // break;
@@ -100,16 +87,15 @@ int main()
         line="";
     }
     
-    // std::ofstream twords;
-    // twords.open("uniquewords.txt");
-    // std::unordered_set<std::string>::iterator its ;
-    // for(its = tempTotalWords.begin();its != tempTotalWords.end();its++)
-    // {
-    //     // totalWords.push_back(*its);
-    //     twords << *its <<" ";    
-    // }
-    // twords.close();
-    // fe.BagOfWords(totalWords);
+    std::ofstream twords;
+    twords.open("uniquewords.txt");
+    std::unordered_set<std::string>::iterator its ;
+    for(its = tempTotalWords.begin();its != tempTotalWords.end();its++)
+    {
+        // totalWords.push_back(*its);
+        twords << *its <<" ";    
+    }
+    twords.close();
 
     return 0;
 }
