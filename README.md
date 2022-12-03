@@ -1,4 +1,4 @@
-# Welcome to Features Extraction for Spam Email Detection 📧
+# **Feature Extraction for Spam Email Detection** 📧
 
 The proposed system of the project will effectively detect the spam mails and the system will extract the spam mails by using some machine learning algorithms and it gives the result with greater accuracy and with good performance. It will save the user's time and it destroys the risk of spam mails.
 
