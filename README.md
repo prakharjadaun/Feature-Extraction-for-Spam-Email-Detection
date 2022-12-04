@@ -28,3 +28,11 @@ B.	Feature Extraction <br>
 - Tf-Idf <br>
 
 C. Classification <br>
+- Naive Bayes Algorithm (in C++ also)
+- Random Forest Classifier
+- Support Vector Machine
+- MLP Classifier
+
+### Dataset Preparation
+
+Note: The datasets that are created in our project has been uploaded here : [Datasets](https://drive.google.com/drive/folders/1rXZUdqfM7isbSdluulQhJ2wKu2ho8MDj?usp=share_link)
