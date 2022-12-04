@@ -1,20 +1,11 @@
 #include <cmath>
-
-/*
-double alg_math::calc_prob(double value,double mean,double stdev)
-{
-    double exponent = exp(-(pow(value-mean ,2) / (2 * pow(stdev,2))));
-    return (1 / (sqrt(2 * M_PI) * stdev)) * exponent;
-}
-*/
-
 #include <iostream>
 #include <vector>
 #include <cmath>
 #include <numeric>
 #include <algorithm>
 #pragma once
-namespace alg_math
+namespace algMath
 {
     template <typename T>
     T Math_Mean(std::vector<T>);
@@ -28,18 +19,17 @@ namespace alg_math
 }
 
 template <typename T>
-T alg_math::Math_Mean(std::vector<T> Data)
+T algMath::Math_Mean(std::vector<T> Data)
 {
     T mean = std::accumulate(std::begin(Data), std::end(Data), 0.0) / Data.size();
     return mean;
 }
 
 template <typename M>
-double alg_math::Math_Var(std::vector<M> &Data)
+double algMath::Math_Var(std::vector<M> &Data)
 {
     M mean = std::accumulate(std::begin(Data), std::end(Data), 0.0) / Data.size();
-    // double sq_sum = std::inner_product(Data.begin(), Data.end(), Data.begin(), 0.0);
-    // double stdev = std::sqrt((sq_sum  - (double)(mean * mean))/ Data.size());
+
     double accum = 0.0;
     std::for_each(std::begin(Data), std::end(Data), [&](const double d)
                   { accum += (d - mean) * (d - mean); });
@@ -49,7 +39,7 @@ double alg_math::Math_Var(std::vector<M> &Data)
     return stdev;
 }
 template <typename T>
-std::vector<std::vector<T>> alg_math::vect_Transpose(std::vector<std::vector<T>> &input_Vector)
+std::vector<std::vector<T>> algMath::vect_Transpose(std::vector<std::vector<T>> &input_Vector)
 {
     if (input_Vector.size() > 0)
     {
@@ -67,7 +57,7 @@ std::vector<std::vector<T>> alg_math::vect_Transpose(std::vector<std::vector<T>>
     return input_Vector;
 }
 template <typename T>
-std::vector<T> alg_math::vect_Multiply(std::vector<T> &input_Vector1, std::vector<T> &input_Vector2)
+std::vector<T> algMath::vect_Multiply(std::vector<T> &input_Vector1, std::vector<T> &input_Vector2)
 {
     if (input_Vector1.size() == input_Vector2.size() && input_Vector1.size() != 0)
     {
@@ -81,7 +71,8 @@ std::vector<T> alg_math::vect_Multiply(std::vector<T> &input_Vector1, std::vecto
     }
     return input_Vector1;
 }
-double alg_math::calc_prob(double x, double m, double s)
+
+double algMath::calc_prob(double x, double m, double s)
 {
     static const double inv_sqrt_2pi = 0.3989422804014327;
     double a = (x - m) / s;

@@ -11,7 +11,7 @@ int main()
 {
     std::srand (unsigned(std::time(0)));
     std::ifstream in;
-    in.open("train.csv");
+    in.open("Tf Idf for cpp.csv");
     NaiveBayes naive = NaiveBayes();
     vector<vector<float>> dataset;
     vector<float> row;
@@ -46,12 +46,12 @@ int main()
     cout<<"dataset size"<<dataset.size()<<","<<dataset[0].size()<<endl;
 
     std::srand (unsigned(std::time(0)));
-    dataset = alg_math::vect_Transpose(dataset); 
+    dataset = algMath::vect_Transpose(dataset); 
     std::random_shuffle (dataset.begin(),dataset.end());
-    dataset = alg_math::vect_Transpose(dataset); 
-    float percentage =90;
-    std::vector<std::vector<float>> training_data  = vector_Train_Split(dataset , percentage);
-    std::vector<std::vector<float>> testing_data  = vector_Test_Split(dataset , 100 - percentage);
+    dataset = algMath::vect_Transpose(dataset); 
+    float percentage =70;
+    std::vector<std::vector<float>> training_data  = vectorTrainSplit(dataset , percentage);
+    std::vector<std::vector<float>> testing_data  = vectorTestSplit(dataset , 100 - percentage);
     
     std::cout<< "testing Data Size is ( " << testing_data.size() << " , "  <<testing_data[0].size()<<" )" <<std::endl;
     
@@ -59,7 +59,7 @@ int main()
     naive.fit(training_data);
 
     std::vector<float> predicitions;
-    testing_data = alg_math::vect_Transpose(testing_data); 
+    testing_data = algMath::vect_Transpose(testing_data); 
     for(std::size_t i=0; i<testing_data.size(); i++ )
     {
         cout<<"Predicting..."<<"\r";
@@ -67,7 +67,7 @@ int main()
         auto index = naive.predict(testing_data[i]);
         predicitions.push_back(index);
     }
-    testing_data = alg_math::vect_Transpose(testing_data); 
-    std::cout<<"score is :" << Vect_match_Score (testing_data[4],predicitions)<<std::endl;
+    testing_data = algMath::vect_Transpose(testing_data); 
+    std::cout<<"score is :" << vectMatchScore(testing_data[4],predicitions)<<std::endl;
     return 0;
 }

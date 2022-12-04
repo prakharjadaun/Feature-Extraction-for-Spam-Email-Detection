@@ -56,8 +56,6 @@ void BagOfWords::transform(std::vector<std::vector<std::string>> processedData)
     }
     out<<std::endl;
 
-    // std::cout<<processedData.size()<<std::endl;
-    // std::cout<<processedData[0].size()<<std::endl;
 
     //3. creating the bag of words file
     for(int i=0;i<processedData.size();i++)

@@ -242,6 +242,8 @@ std::pair<std::vector<std::string>,std::vector<std::string>> Preprocessing::remo
 }
 
 //function to stem words of the subject and message section 
+
+
 std::vector<std::string> Preprocessing::stemWords(std::pair<std::vector<std::string>,std::vector<std::string>> val)
 {
     std::vector<std::string> s,m;
@@ -261,7 +263,6 @@ std::vector<std::string> Preprocessing::stemWords(std::pair<std::vector<std::str
         //inserting the stemmed string into the set
         tempSet.insert(temp2);
     }
-
     for(int i=0;i<m.size();i++)
     {
         //storing the string in a temporary variable
@@ -273,16 +274,12 @@ std::vector<std::string> Preprocessing::stemWords(std::pair<std::vector<std::str
         //inserting the stemmed string into the set
         tempSet.insert(temp2);
     }
-    
     std::vector<std::string> vStem;
-
     std::unordered_set<std::string>::iterator it;
-
     for(it = tempSet.begin();it!=tempSet.end();it++)
     {
         vStem.push_back(*it);
     }
-    
     return vStem;
 }
 
