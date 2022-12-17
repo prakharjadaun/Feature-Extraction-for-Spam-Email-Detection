@@ -21,7 +21,7 @@ A.	Pre-processing <br>
 - Lowercase Conversion <br>
 - Tokenization <br>
 - Removal of Stop words <br>
-- Stemming <br>
+- [Stemming](https://github.com/Blake-Madden/OleanderStemmingLibrary) <br>
 
 B.	Feature Extraction <br>
 - Bag of words <br>
